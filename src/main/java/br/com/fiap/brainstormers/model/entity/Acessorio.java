@@ -10,19 +10,16 @@ public class Acessorio {
 	@NotNull
 	private Long idBicicleta;
 	@NotBlank
-	private String nrNotaFiscalAcessorio;
-	@NotBlank
 	private String nomeAcessorio;
 	@PositiveOrZero
-	private Float nrValorAcessorio;
+	private Float ValorAcessorio;
 	
-	public Acessorio(@NotNull Long idAcessorio, @NotNull Long idBicicleta, @NotBlank String nrNotaFiscalAcessorio,
-			@NotBlank String nomeAcessorio, @PositiveOrZero Float nrValorAcessorio) {	
+	public Acessorio(@NotNull Long idAcessorio, @NotNull Long idBicicleta, @NotBlank String nomeAcessorio,
+			@PositiveOrZero Float valorAcessorio) {
 		this.idAcessorio = idAcessorio;
 		this.idBicicleta = idBicicleta;
-		this.nrNotaFiscalAcessorio = nrNotaFiscalAcessorio;
 		this.nomeAcessorio = nomeAcessorio;
-		this.nrValorAcessorio = nrValorAcessorio;
+		ValorAcessorio = valorAcessorio;
 	}
 
 	public Long getIdAcessorio() {
@@ -41,14 +38,6 @@ public class Acessorio {
 		this.idBicicleta = idBicicleta;
 	}
 
-	public String getNrNotaFiscalAcessorio() {
-		return nrNotaFiscalAcessorio;
-	}
-
-	public void setNrNotaFiscalAcessorio(String nrNotaFiscalAcessorio) {
-		this.nrNotaFiscalAcessorio = nrNotaFiscalAcessorio;
-	}
-
 	public String getNomeAcessorio() {
 		return nomeAcessorio;
 	}
@@ -57,13 +46,16 @@ public class Acessorio {
 		this.nomeAcessorio = nomeAcessorio;
 	}
 
-	public Float getNrValorAcessorio() {
-		return nrValorAcessorio;
+	public Float getValorAcessorio() {
+		return ValorAcessorio;
 	}
 
-	public void setNrValorAcessorio(Float nrValorAcessorio) {
-		this.nrValorAcessorio = nrValorAcessorio;
+	public void setValorAcessorio(Float valorAcessorio) {
+		ValorAcessorio = valorAcessorio;
 	}
+	
+	
+	
 	
 	
 }

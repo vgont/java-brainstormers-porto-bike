@@ -2,7 +2,7 @@ package br.com.fiap.brainstormers.model.repository;
 
 import java.sql.Connection;
 
-public class Repository {
+public abstract class Repository {
 	
 	protected static Connection conn;
 	

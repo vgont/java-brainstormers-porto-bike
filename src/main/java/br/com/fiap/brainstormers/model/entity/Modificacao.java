@@ -10,20 +10,16 @@ public class Modificacao {
 	@NotNull
 	private Long idBicicleta;
 	@NotBlank
-	private String nrNotaFiscalModificacao;
-	@NotBlank
 	private String nomeModificacao;
 	@PositiveOrZero
-	private Float nrValorModificacao;
+	private Float ValorModificacao;
 	
-	public Modificacao(@NotNull Long idModificacao, @NotNull Long idBicicleta, @NotBlank String nrNotaFiscalModificacao,
-			@NotBlank String nomeModificacao, @PositiveOrZero Float nrValorModificacao) {
-		super();
+	public Modificacao(@NotNull Long idModificacao, @NotNull Long idBicicleta, @NotBlank String nomeModificacao,
+			@PositiveOrZero Float valorModificacao) {
 		this.idModificacao = idModificacao;
 		this.idBicicleta = idBicicleta;
-		this.nrNotaFiscalModificacao = nrNotaFiscalModificacao;
 		this.nomeModificacao = nomeModificacao;
-		this.nrValorModificacao = nrValorModificacao;
+		ValorModificacao = valorModificacao;
 	}
 
 	public Long getIdModificacao() {
@@ -42,14 +38,6 @@ public class Modificacao {
 		this.idBicicleta = idBicicleta;
 	}
 
-	public String getNrNotaFiscalModificacao() {
-		return nrNotaFiscalModificacao;
-	}
-
-	public void setNrNotaFiscalModificacao(String nrNotaFiscalModificacao) {
-		this.nrNotaFiscalModificacao = nrNotaFiscalModificacao;
-	}
-
 	public String getNomeModificacao() {
 		return nomeModificacao;
 	}
@@ -58,13 +46,14 @@ public class Modificacao {
 		this.nomeModificacao = nomeModificacao;
 	}
 
-	public Float getNrValorModificacao() {
-		return nrValorModificacao;
+	public Float getValorModificacao() {
+		return ValorModificacao;
 	}
 
-	public void setNrValorModificacao(Float nrValorModificacao) {
-		this.nrValorModificacao = nrValorModificacao;
+	public void setValorModificacao(Float valorModificacao) {
+		ValorModificacao = valorModificacao;
 	}
+	
 	
 	
 	
