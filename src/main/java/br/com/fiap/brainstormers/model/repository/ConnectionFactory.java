@@ -32,13 +32,13 @@ public class ConnectionFactory {
 		try (FileInputStream file = new FileInputStream("./src/main/resources/application.properties")) {
 			prop.load(file);
 			String url = prop.getProperty("datasource.url");
-			String user = prop.getProperty("datasource.user");
+			String user = prop.getProperty("datasource.username");
 			String pass = prop.getProperty("datasource.password");
 			String driver = prop.getProperty("datasource.driver-class-name");
-			System.out.println("url: " + url + "user: " + user + "pass: " + pass + "driver: " + driver);
+			System.out.println("url: " + url + "\nuser: " + user + "\npass: " + pass + "\ndriver: " + driver);
 
 			instance = new ConnectionFactory(url, user, pass, driver);
-
+			return instance;
 		} catch (IOException e) {
 			System.out.println(e.getMessage());
 		}

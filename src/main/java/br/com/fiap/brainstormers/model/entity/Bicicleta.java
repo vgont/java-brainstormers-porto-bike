@@ -1,61 +1,66 @@
 package br.com.fiap.brainstormers.model.entity;
 
+import jakarta.json.bind.annotation.JsonbProperty;
+import jakarta.json.bind.annotation.JsonbVisibility;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
 public class Bicicleta {
-	@NotNull
 	private Long idBicicleta;
+	
 	@NotBlank
+	@JsonbProperty("serialNumber")
 	private String nrSerieBicicleta;
+	
 	@NotNull
+	@JsonbProperty("idClient")
 	private Long idCliente;
+	
 	@NotBlank
+	@JsonbProperty("type")
 	private String tipoBicicleta;
+	
 	@NotBlank
-	private String MarcaBicicleta;
+	@JsonbProperty("brand")
+	private String marcaBicicleta;
+	
 	@NotBlank
-	private String ModeloBicicleta;
+	@JsonbProperty("model")
+	private String modeloBicicleta;
+	
+	@NotNull
 	@PositiveOrZero
-	private Float ValorBicicleta;
+	@JsonbProperty("price")
+	private Float valorBicicleta;
+	
 	@PositiveOrZero
+	@JsonbProperty("powerInWatts")
 	private Float nrPotenciaBicicleta;
-	@NotBlank
+	@NotBlank 
+	@JsonbProperty("category")
 	private String categoriaBicicleta;
+	@NotNull
 	@PositiveOrZero
+	@JsonbProperty("age")
 	private Integer tempoUsoAnosBicicleta;
 	
-	//Bicicleta com o numero da potencia (eletrica)
-	public Bicicleta(@NotNull Long idBicicleta, @NotBlank String nrSerieBicicleta, @NotNull Long idCliente,
-			@NotBlank String tipoBicicleta, @NotBlank String marcaBicicleta, @NotBlank String modeloBicicleta,
-			@PositiveOrZero Float valorBicicleta, @PositiveOrZero Float nrPotenciaBicicleta,
-			@NotBlank String categoriaBicicleta, @PositiveOrZero Integer tempoUsoAnosBicicleta) {
-		this.idBicicleta = idBicicleta;
-		this.nrSerieBicicleta = nrSerieBicicleta;
-		this.idCliente = idCliente;
-		this.tipoBicicleta = tipoBicicleta;
-		MarcaBicicleta = marcaBicicleta;
-		ModeloBicicleta = modeloBicicleta;
-		ValorBicicleta = valorBicicleta;
-		this.nrPotenciaBicicleta = nrPotenciaBicicleta;
-		this.categoriaBicicleta = categoriaBicicleta;
-		this.tempoUsoAnosBicicleta = tempoUsoAnosBicicleta;
+	public Bicicleta() {
+		
 	}
 
-	//Bicicleta sem numero da potencia
-	public Bicicleta(@NotNull Long idBicicleta, @NotBlank String nrSerieBicicleta, @NotNull Long idCliente,
+	public Bicicleta(Long idBicicleta, @NotBlank String nrSerieBicicleta, @NotNull Long idCliente,
 			@NotBlank String tipoBicicleta, @NotBlank String marcaBicicleta, @NotBlank String modeloBicicleta,
-			@PositiveOrZero Float valorBicicleta, @NotBlank String categoriaBicicleta,
-			@PositiveOrZero Integer tempoUsoAnosBicicleta) {
-		super();
+			@NotNull @PositiveOrZero Float valorBicicleta, @PositiveOrZero Float nrPotenciaBicicleta,
+			@NotBlank String categoriaBicicleta, @NotNull @PositiveOrZero Integer tempoUsoAnosBicicleta) {
 		this.idBicicleta = idBicicleta;
 		this.nrSerieBicicleta = nrSerieBicicleta;
 		this.idCliente = idCliente;
 		this.tipoBicicleta = tipoBicicleta;
-		MarcaBicicleta = marcaBicicleta;
-		ModeloBicicleta = modeloBicicleta;
-		ValorBicicleta = valorBicicleta;
+		this.marcaBicicleta = marcaBicicleta;
+		this.modeloBicicleta = modeloBicicleta;
+		this.valorBicicleta = valorBicicleta;
+		this.nrPotenciaBicicleta = nrPotenciaBicicleta;
 		this.categoriaBicicleta = categoriaBicicleta;
 		this.tempoUsoAnosBicicleta = tempoUsoAnosBicicleta;
 	}
@@ -93,27 +98,27 @@ public class Bicicleta {
 	}
 
 	public String getMarcaBicicleta() {
-		return MarcaBicicleta;
+		return marcaBicicleta;
 	}
 
 	public void setMarcaBicicleta(String marcaBicicleta) {
-		MarcaBicicleta = marcaBicicleta;
+		this.marcaBicicleta = marcaBicicleta;
 	}
 
 	public String getModeloBicicleta() {
-		return ModeloBicicleta;
+		return modeloBicicleta;
 	}
 
 	public void setModeloBicicleta(String modeloBicicleta) {
-		ModeloBicicleta = modeloBicicleta;
+		this.modeloBicicleta = modeloBicicleta;
 	}
 
 	public Float getValorBicicleta() {
-		return ValorBicicleta;
+		return valorBicicleta;
 	}
 
 	public void setValorBicicleta(Float valorBicicleta) {
-		ValorBicicleta = valorBicicleta;
+		this.valorBicicleta = valorBicicleta;
 	}
 
 	public Float getNrPotenciaBicicleta() {
@@ -138,8 +143,11 @@ public class Bicicleta {
 
 	public void setTempoUsoAnosBicicleta(Integer tempoUsoAnosBicicleta) {
 		this.tempoUsoAnosBicicleta = tempoUsoAnosBicicleta;
-	}	
+	}
+
 	
+	
+
 	
 	
 
