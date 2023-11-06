@@ -10,11 +10,11 @@ import jakarta.ws.rs.Path;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 
-@Path("/vistoria")
+@Path("/")
 public class BicicletaResource {
 
 	@POST
-	@Path("/finalizar")
+	@Path("vistoria/finalizar")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response save(@Valid Bicicleta bicicleta) {
 		Bicicleta savedBicicleta = BicicletaRepository.save(bicicleta);
@@ -26,7 +26,7 @@ public class BicicletaResource {
 	}
 	
 	@OPTIONS
-	@Path("/finalizar")
+	@Path("/*")
 	public Response options() {
 	    return Response.ok("")
 	            .header("Access-Control-Allow-Origin", "*")
