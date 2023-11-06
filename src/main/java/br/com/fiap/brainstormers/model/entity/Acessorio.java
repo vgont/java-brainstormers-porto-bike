@@ -52,10 +52,5 @@ public class Acessorio {
 
 	public void setValorAcessorio(Float valorAcessorio) {
 		ValorAcessorio = valorAcessorio;
-	}
-	
-	
-	
-	
-	
+	}	
 }

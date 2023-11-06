@@ -15,14 +15,6 @@ public class BicicletaRepository extends Repository {
 				+ "values(null,?,?,?,?,?,?,?,?,?)";
 
 		try (PreparedStatement ps = getConn().prepareStatement(sql)) {
-			System.out.println("Bicicleta: " +bicicleta.getNrSerieBicicleta()
-			+"\n"+bicicleta.getIdCliente()
-			+"\n"+bicicleta.getTipoBicicleta()
-			+"\n"+bicicleta.getMarcaBicicleta()
-			+"\n"+bicicleta.getModeloBicicleta()
-			+"\n"+bicicleta.getValorBicicleta()
-			+"\n"+bicicleta.getCategoriaBicicleta()
-			+"\n"+bicicleta.getTempoUsoAnosBicicleta());
 			ps.setString(1, bicicleta.getNrSerieBicicleta());
 			ps.setLong(2, bicicleta.getIdCliente());
 			ps.setString(3, bicicleta.getTipoBicicleta());
@@ -31,19 +23,25 @@ public class BicicletaRepository extends Repository {
 			ps.setFloat(6, bicicleta.getValorBicicleta());
 			ps.setString(7, bicicleta.getCategoriaBicicleta());
 			ps.setInt(8, bicicleta.getTempoUsoAnosBicicleta());
-			
 			if (bicicleta.getNrPotenciaBicicleta() != null) {
 				ps.setFloat(9, bicicleta.getNrPotenciaBicicleta());
 			} else {
 				ps.setNull(9, 0);
 			}
 			
-			if (ps.executeUpdate() > 0) {
+			int rowsAffected = ps.executeUpdate();
+			
+			System.out.println("r: "+ rowsAffected);
+			
+			if (rowsAffected > 0) {
+				System.out.println("enviou!");
 				return bicicleta;
 			}
+			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
 		}
+		System.out.println("nao enviou :(");
 		return null;
 
 	}
