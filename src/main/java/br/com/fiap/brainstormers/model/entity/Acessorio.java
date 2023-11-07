@@ -21,6 +21,7 @@ public class Acessorio {
 		this.nomeAcessorio = nomeAcessorio;
 		ValorAcessorio = valorAcessorio;
 	}
+	public Acessorio() {}
 
 	public Long getIdAcessorio() {
 		return idAcessorio;

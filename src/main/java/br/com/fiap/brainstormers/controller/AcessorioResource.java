@@ -2,8 +2,8 @@ package br.com.fiap.brainstormers.controller;
 
 import java.util.ArrayList;
 
-import br.com.fiap.brainstormers.model.entity.Bicicleta;
-import br.com.fiap.brainstormers.model.repository.BicicletaRepository;
+import br.com.fiap.brainstormers.model.entity.Acessorio;
+import br.com.fiap.brainstormers.model.repository.AcessoriaRepository;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
@@ -11,44 +11,33 @@ import jakarta.ws.rs.OPTIONS;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
-import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
 
-@Path("/")
-public class BicicletaResource {
-
+public class AcessorioResource {
 	@POST
-	@Path("vistoria/finalizar")
+	@Path("acessorio/finalizar")
 	@Consumes(MediaType.APPLICATION_JSON)
-	public Response save(@Valid Bicicleta bicicleta) {
-		Bicicleta savedBicicleta = BicicletaRepository.save(bicicleta);
+	public Response save(@Valid Acessorio acessorio) {
+		Acessorio savedAcessorio = AcessoriaRepository.save(acessorio);
 
-		if (savedBicicleta == null) {
+		if (savedAcessorio == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
-		return Response.ok().entity(savedBicicleta).build();
+		return Response.ok().entity(savedAcessorio).build();
 	}
-
+	
 	@GET
-	@Path("bikes/{id}")
+	@Path("acessorio/{id}")
 	public Response findAllById(@PathParam("id") Long id) {
-		ArrayList<Bicicleta> bike = BicicletaRepository.findAllByIdCliente(id);
+		ArrayList<Acessorio> acessorio = AcessoriaRepository.findAllByIdBicicleta(id);
 		ResponseBuilder response = Response.ok();
-		response.entity(bike);
+		response.entity(acessorio);
 		return response.build();
 
 	}
-
-	@GET
-	public Response findAll() {
-		ArrayList<Bicicleta> bike = BicicletaRepository.findAll();
-		ResponseBuilder response = Response.ok();
-		response.entity(bike);
-		return response.build();
-	}
-
+	
 	@OPTIONS
 	@Path("/*")
 	public Response options() {

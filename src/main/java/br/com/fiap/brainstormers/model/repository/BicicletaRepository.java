@@ -1,8 +1,9 @@
 package br.com.fiap.brainstormers.model.repository;
 
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-
+import java.util.ArrayList;
 import br.com.fiap.brainstormers.model.entity.Bicicleta;
 
 public class BicicletaRepository extends Repository {
@@ -40,9 +41,77 @@ public class BicicletaRepository extends Repository {
 			
 		} catch (SQLException e) {
 			System.out.println(e.getMessage());
+		} finally {
+			closeConn();
 		}
 		System.out.println("nao enviou :(");
 		return null;
 
+	}
+	
+	public static ArrayList<Bicicleta> findAllByIdCliente(Long id) {
+		ArrayList<Bicicleta> bike = new ArrayList<Bicicleta>();
+		String sql = "select * from t_cvb_bicicleta where id_cliente= ?";
+		
+		try {
+			PreparedStatement ps = getConn().prepareStatement(sql);
+			ps.setLong(1, id);
+			ResultSet rs = ps.executeQuery();
+			
+			if (rs != null) {
+				while (rs.next()) {
+					Bicicleta bicicleta = new Bicicleta();
+					bicicleta.setIdBicicleta(rs.getLong("id_bicicleta"));
+					bicicleta.setNrSerieBicicleta(rs.getString("nr_serie_bicicleta"));
+					bicicleta.setIdBicicleta(rs.getLong("id_cliente"));
+					bicicleta.setTipoBicicleta(rs.getString("tipo_bicicleta"));
+					bicicleta.setMarcaBicicleta(rs.getString("nm_marca_bicicleta"));
+					bicicleta.setModeloBicicleta(rs.getString("nm_modelo_bicicleta"));
+					bicicleta.setValorBicicleta(rs.getFloat("valor_bicicleta"));
+					bicicleta.setCategoriaBicicleta(rs.getString("categoria_bicicleta"));
+					bicicleta.setTempoUsoAnosBicicleta(rs.getInt("tp_uso_bicicleta"));
+					bicicleta.setNrPotenciaBicicleta(rs.getFloat("nr_potencia_bicicleta"));
+					bike.add(bicicleta);
+				}
+			}else {
+				return null;
+			}
+		} catch (SQLException e) {
+			System.out.println(e.getMessage());
+		}finally {
+			closeConn();
+		}
+		return bike;
+	}
+	
+	public static ArrayList<Bicicleta> findAll(){
+		ArrayList<Bicicleta> bike = new ArrayList<Bicicleta>();
+		String sql = "select * from t_cvb_bicicleta";
+		try {
+			PreparedStatement ps = getConn().prepareStatement(sql);
+			ResultSet rs = ps.executeQuery();
+			if (rs != null) {
+				while (rs.next()) {
+					Bicicleta bicicleta = new Bicicleta();
+					bicicleta.setNrSerieBicicleta(rs.getString("nr_serie_bicicleta"));
+					bicicleta.setIdBicicleta(rs.getLong("id_cliente"));
+					bicicleta.setTipoBicicleta(rs.getString("tipo_bicicleta"));
+					bicicleta.setMarcaBicicleta(rs.getString("nm_marca_bicicleta"));
+					bicicleta.setModeloBicicleta(rs.getString("nm_modelo_bicicleta"));
+					bicicleta.setValorBicicleta(rs.getFloat("valor_bicicleta"));
+					bicicleta.setCategoriaBicicleta(rs.getString("categoria_bicicleta"));
+					bicicleta.setTempoUsoAnosBicicleta(rs.getInt("tempo_uso_bicicleta"));
+					bicicleta.setNrPotenciaBicicleta(rs.getFloat("nr_potencia_bicicleta"));
+					bike.add(bicicleta);
+				}
+			} else {
+				return null;
+			}
+		} catch (SQLException e) {
+			System.out.println("Erro ao listar: " + e.getMessage());
+		} finally {
+			closeConn();
+		}
+		return bike;
 	}
 }

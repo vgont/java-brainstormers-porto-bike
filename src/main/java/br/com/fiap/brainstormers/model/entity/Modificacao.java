@@ -13,7 +13,7 @@ public class Modificacao {
 	private String nomeModificacao;
 	@PositiveOrZero
 	private Float ValorModificacao;
-	
+
 	public Modificacao(@NotNull Long idModificacao, @NotNull Long idBicicleta, @NotBlank String nomeModificacao,
 			@PositiveOrZero Float valorModificacao) {
 		this.idModificacao = idModificacao;
@@ -21,6 +21,8 @@ public class Modificacao {
 		this.nomeModificacao = nomeModificacao;
 		ValorModificacao = valorModificacao;
 	}
+
+	public Modificacao() {}
 
 	public Long getIdModificacao() {
 		return idModificacao;
@@ -53,8 +55,5 @@ public class Modificacao {
 	public void setValorModificacao(Float valorModificacao) {
 		ValorModificacao = valorModificacao;
 	}
-	
-	
-	
-	
+
 }
