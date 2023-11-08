@@ -38,7 +38,7 @@ public class ModificacaoResource {
 				
 		ResponseBuilder response = Response.ok();
 		if(modificacao == null) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 		response.entity(modificacao);
 		return response.build();

@@ -11,7 +11,7 @@ public class AcessorioRepository extends Repository {
 
 	public static Acessorio save(Acessorio acessorio) {
 		String sql = "insert into t_cvb_acessorio (id_acessorio, id_bicicleta, nm_acessorio, valor_acessorio) "
-				+ "values(null,?,?,?)";
+				+ "values(SQ_T_CVB_ACESSORIO.NEXTVAL,?,?,?)";
 
 		try (PreparedStatement ps = getConn().prepareStatement(sql)) {
 			ps.setLong(1, acessorio.getIdBicicleta());

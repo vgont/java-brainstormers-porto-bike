@@ -9,7 +9,7 @@ import br.com.fiap.brainstormers.model.entity.Modificacao;
 public class ModificacaoRepository extends Repository {
 	public static Modificacao save(Modificacao modificacao) {
 		String sql = "insert into t_cvb_modificacao "
-				+ "(id_modificacao, id_bicicleta, nm_modificacao, valor_modificacao) " + "values(null,?,?,?)";
+				+ "(id_modificacao, id_bicicleta, nm_modificacao, valor_modificacao) " + "values(SQ_T_CVB_MODIFICACAO.NEXTVAL,?,?,?)";
 
 		try (PreparedStatement ps = getConn().prepareStatement(sql)) {
 			ps.setLong(1, modificacao.getIdBicicleta());

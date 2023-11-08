@@ -7,7 +7,6 @@ import br.com.fiap.brainstormers.model.repository.AcessorioRepository;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.OPTIONS;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -35,7 +34,7 @@ public class AcessorioResource {
 		ArrayList<Acessorio> acessorio = AcessorioRepository.findAllByIdBicicleta(idBicicleta);
 		ResponseBuilder response = Response.ok();
 		if (acessorio == null) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 		
 		response.entity(acessorio);

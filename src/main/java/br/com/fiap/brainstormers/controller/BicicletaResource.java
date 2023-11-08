@@ -7,7 +7,6 @@ import br.com.fiap.brainstormers.model.repository.BicicletaRepository;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.OPTIONS;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -28,11 +27,7 @@ public class BicicletaResource {
 		if (savedBicicleta == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
-		return Response.ok().header("Access-Control-Allow-Origin", "*")
-				.header("Access-Control-Allow-Headers", "*")
-				.header("Access-Control-Allow-Credentials", "true")
-				.header("Access-Control-Allow-Methods", "*")
-				.header("Access-Control-Max-Age", "1209600").entity(savedBicicleta).build();
+		return Response.ok().entity(savedBicicleta).build();
 	}
 
 	@GET
@@ -43,7 +38,7 @@ public class BicicletaResource {
 		ResponseBuilder response = Response.ok();
 
 		if (bike == null) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 		response.entity(bike);
 		return response.build();

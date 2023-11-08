@@ -2,7 +2,6 @@ package br.com.fiap.brainstormers.controller;
 
 import br.com.fiap.brainstormers.model.entity.Cliente;
 import br.com.fiap.brainstormers.model.repository.ClienteRepository;
-import jakarta.validation.Valid;
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
@@ -20,7 +19,7 @@ public class ClienteResource {
 		Cliente savedCliente = ClienteRepository.findAllById(idCliente);
 
 		if (savedCliente == null) {
-			return Response.status(Response.Status.BAD_REQUEST).build();
+			return Response.status(Response.Status.NOT_FOUND).build();
 		}
 		return Response.created(null).entity(savedCliente).build();
 	}
