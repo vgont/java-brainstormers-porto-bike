@@ -21,6 +21,6 @@ public class ClienteResource {
 		if (savedCliente == null) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
-		return Response.created(null).entity(savedCliente).build();
+		return Response.ok().entity(savedCliente).build();
 	}
 }

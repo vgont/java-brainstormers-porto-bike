@@ -27,7 +27,7 @@ public class BicicletaResource {
 		if (savedBicicleta == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
-		return Response.ok().entity(savedBicicleta).build();
+		return Response.created(null).entity(savedBicicleta).build();
 	}
 
 	@GET
