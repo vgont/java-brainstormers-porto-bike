@@ -7,10 +7,10 @@ import br.com.fiap.brainstormers.model.repository.ModificacaoRepository;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
 import jakarta.ws.rs.GET;
-import jakarta.ws.rs.OPTIONS;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
 import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
 import jakarta.ws.rs.core.Response.ResponseBuilder;
@@ -19,7 +19,7 @@ import jakarta.ws.rs.core.Response.ResponseBuilder;
 public class ModificacaoResource {
 	
 	@POST
-	@Path("modificacao/finalizar")
+	@Path("modificacoes")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response save(@Valid Modificacao modificacao) {
 		Modificacao savedModificacao = ModificacaoRepository.save(modificacao);
@@ -32,6 +32,7 @@ public class ModificacaoResource {
 	
 	@GET
 	@Path("modificacao/{idBicicleta}")
+	@Produces(MediaType.APPLICATION_JSON)
 	public Response findAllById(@PathParam("idBicicleta") Long idBicicleta) {
 		ArrayList<Modificacao> modificacao= ModificacaoRepository.findAllByIdBicicleta(idBicicleta);
 				

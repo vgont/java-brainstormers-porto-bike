@@ -1,31 +1,28 @@
 package br.com.fiap.brainstormers.model.repository;
 
 import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.ResultSet;
 
 import br.com.fiap.brainstormers.model.entity.Cliente;
 
-public class ClienteRepository extends Repository{
-	public static Cliente save(Cliente cliente) {
-		String sql = "insert into t_cvb_cliente" 
-				+ "(id_cliente, nm_cliente, email_cliente, senha_cliente) "
-				+ "values(null,?,?,?)";
+public class ClienteRepository extends Repository {
 
+	public static Cliente findAllById(Long idCliente) {
+		String sql = "select * from t_cvb_cliente where id_cliente=?";
 		try (PreparedStatement ps = getConn().prepareStatement(sql)) {
-			ps.setString(1, cliente.getNomeCliente());
-			ps.setString(2, cliente.getEmailCliente());
-			ps.setString(3, cliente.getSenhaCliente());
-			
-			if (ps.executeUpdate() > 0) {
+			ps.setLong(1, idCliente);
+			ResultSet rs = ps.executeQuery();
+			if(rs.next()) {
+				Cliente cliente = new Cliente();
+				cliente.setIdCliente(idCliente);
+				cliente.setEmailCliente("email_cliente");
+				cliente.setSenhaCliente("senha_cliente");
 				return cliente;
 			}
 			
-		} catch (SQLException e) {
+		} catch (Exception e) {
 			System.out.println(e.getMessage());
-		} finally {
-			closeConn();
 		}
-		System.out.println("nao enviou :(");
 		return null;
 	}
 }

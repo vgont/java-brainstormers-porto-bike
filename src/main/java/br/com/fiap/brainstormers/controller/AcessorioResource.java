@@ -18,7 +18,7 @@ import jakarta.ws.rs.core.Response.ResponseBuilder;
 public class AcessorioResource {
 	
 	@POST
-	@Path("vistoria/finalizar")
+	@Path("acessorios")
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response save(@Valid Acessorio acessorio) {
 		Acessorio savedAcessorio = AcessorioRepository.save(acessorio);

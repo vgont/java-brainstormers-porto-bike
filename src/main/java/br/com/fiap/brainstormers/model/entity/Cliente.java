@@ -6,8 +6,6 @@ import jakarta.validation.constraints.NotNull;
 public class Cliente {
 	private Long idCliente;
 	@NotBlank
-	private String nomeCliente;
-	@NotBlank
 	private String emailCliente;
 	@NotBlank
 	private String senhaCliente;
@@ -16,10 +14,9 @@ public class Cliente {
 	public Cliente() {
 	}
 
-	public Cliente(@NotNull Long idCliente, @NotBlank String nomeCliente, @NotBlank String emailCliente,
+	public Cliente(@NotNull Long idCliente, @NotBlank String emailCliente,
 			@NotBlank String senhaCliente) {
 		this.idCliente = idCliente;
-		this.nomeCliente = nomeCliente;
 		this.emailCliente = emailCliente;
 		this.senhaCliente = senhaCliente;
 	}
@@ -30,14 +27,6 @@ public class Cliente {
 
 	public void setIdCliente(Long idCliente) {
 		this.idCliente = idCliente;
-	}
-
-	public String getNomeCliente() {
-		return nomeCliente;
-	}
-
-	public void setNomeCliente(String nomeCliente) {
-		this.nomeCliente = nomeCliente;
 	}
 
 	public String getEmailCliente() {
