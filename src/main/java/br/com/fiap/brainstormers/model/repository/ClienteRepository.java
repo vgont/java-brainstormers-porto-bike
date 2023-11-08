@@ -15,8 +15,8 @@ public class ClienteRepository extends Repository {
 			if(rs.next()) {
 				Cliente cliente = new Cliente();
 				cliente.setIdCliente(idCliente);
-				cliente.setEmailCliente("email_cliente");
-				cliente.setSenhaCliente("senha_cliente");
+				cliente.setEmailCliente(rs.getString("email_cliente"));
+				cliente.setSenhaCliente(rs.getString("senha_cliente"));
 				return cliente;
 			}
 			
