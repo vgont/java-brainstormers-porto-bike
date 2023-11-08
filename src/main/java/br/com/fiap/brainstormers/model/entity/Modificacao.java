@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
 public class Modificacao {
-	@NotNull
 	private Long idModificacao;
 	@NotNull
 	private Long idBicicleta;

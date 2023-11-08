@@ -5,7 +5,6 @@ import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PositiveOrZero;
 
 public class Acessorio {
-	@NotNull
 	private Long idAcessorio;
 	@NotNull
 	private Long idBicicleta;
@@ -17,7 +16,7 @@ public class Acessorio {
 	public Acessorio() {
 	}
 
-	public Acessorio(@NotNull Long idAcessorio, @NotNull Long idBicicleta, @NotBlank String nomeAcessorio,
+	public Acessorio(Long idAcessorio, @NotNull Long idBicicleta, @NotBlank String nomeAcessorio,
 			@PositiveOrZero Float valorAcessorio) {
 		this.idAcessorio = idAcessorio;
 		this.idBicicleta = idBicicleta;
