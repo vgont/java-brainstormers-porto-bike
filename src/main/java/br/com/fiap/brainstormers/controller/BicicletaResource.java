@@ -1,14 +1,20 @@
 package br.com.fiap.brainstormers.controller;
 
+import java.util.ArrayList;
+
 import br.com.fiap.brainstormers.model.entity.Bicicleta;
 import br.com.fiap.brainstormers.model.repository.BicicletaRepository;
 import jakarta.validation.Valid;
 import jakarta.ws.rs.Consumes;
+import jakarta.ws.rs.GET;
 import jakarta.ws.rs.OPTIONS;
 import jakarta.ws.rs.POST;
 import jakarta.ws.rs.Path;
+import jakarta.ws.rs.PathParam;
+import jakarta.ws.rs.Produces;
 import jakarta.ws.rs.core.MediaType;
 import jakarta.ws.rs.core.Response;
+import jakarta.ws.rs.core.Response.ResponseBuilder;
 
 @Path("/")
 public class BicicletaResource {
@@ -18,22 +24,29 @@ public class BicicletaResource {
 	@Consumes(MediaType.APPLICATION_JSON)
 	public Response save(@Valid Bicicleta bicicleta) {
 		Bicicleta savedBicicleta = BicicletaRepository.save(bicicleta);
-		
+
 		if (savedBicicleta == null) {
 			return Response.status(Response.Status.BAD_REQUEST).build();
 		}
-		return Response.ok().entity(savedBicicleta).build();
+		return Response.ok().header("Access-Control-Allow-Origin", "*")
+				.header("Access-Control-Allow-Headers", "*")
+				.header("Access-Control-Allow-Credentials", "true")
+				.header("Access-Control-Allow-Methods", "*")
+				.header("Access-Control-Max-Age", "1209600").entity(savedBicicleta).build();
 	}
-	
-	@OPTIONS
-	@Path("/*")
-	public Response options() {
-	    return Response.ok("")
-	            .header("Access-Control-Allow-Origin", "*")
-	            .header("Access-Control-Allow-Headers", "origin, content-type, accept, authorization")
-	            .header("Access-Control-Allow-Credentials", "true")
-	            .header("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS, HEAD")
-	            .header("Access-Control-Max-Age", "1209600")
-	            .build();
+
+	@GET
+	@Path("bikes/{idCliente}")
+	@Produces(MediaType.APPLICATION_JSON)
+	public Response findAllById(@PathParam("idCliente") Long idCliente) {
+		ArrayList<Bicicleta> bike = BicicletaRepository.findAllByIdCliente(idCliente);
+		ResponseBuilder response = Response.ok();
+
+		if (bike == null) {
+			return Response.status(Response.Status.BAD_REQUEST).build();
+		}
+		response.entity(bike);
+		return response.build();
+
 	}
 }

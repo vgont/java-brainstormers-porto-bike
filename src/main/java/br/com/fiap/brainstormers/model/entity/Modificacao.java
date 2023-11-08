@@ -13,7 +13,10 @@ public class Modificacao {
 	private String nomeModificacao;
 	@PositiveOrZero
 	private Float ValorModificacao;
-	
+		
+	public Modificacao() {
+	}
+
 	public Modificacao(@NotNull Long idModificacao, @NotNull Long idBicicleta, @NotBlank String nomeModificacao,
 			@PositiveOrZero Float valorModificacao) {
 		this.idModificacao = idModificacao;

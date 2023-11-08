@@ -13,6 +13,10 @@ public class Cliente {
 	@NotBlank
 	private String senhaCliente;
 	
+	
+	public Cliente() {
+	}
+
 	public Cliente(@NotNull Long idCliente, @NotBlank String nomeCliente, @NotBlank String emailCliente,
 			@NotBlank String senhaCliente) {
 		this.idCliente = idCliente;

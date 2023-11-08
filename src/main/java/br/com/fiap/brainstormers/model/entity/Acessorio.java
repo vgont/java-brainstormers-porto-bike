@@ -14,6 +14,9 @@ public class Acessorio {
 	@PositiveOrZero
 	private Float ValorAcessorio;
 	
+	public Acessorio() {
+	}
+
 	public Acessorio(@NotNull Long idAcessorio, @NotNull Long idBicicleta, @NotBlank String nomeAcessorio,
 			@PositiveOrZero Float valorAcessorio) {
 		this.idAcessorio = idAcessorio;
