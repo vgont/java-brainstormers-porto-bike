@@ -11,7 +11,7 @@ public class Acessorio {
 	@NotBlank
 	private String nomeAcessorio;
 	@PositiveOrZero
-	private Float ValorAcessorio;
+	private Float valorAcessorio;
 	
 	public Acessorio() {
 	}
@@ -21,7 +21,7 @@ public class Acessorio {
 		this.idAcessorio = idAcessorio;
 		this.idBicicleta = idBicicleta;
 		this.nomeAcessorio = nomeAcessorio;
-		ValorAcessorio = valorAcessorio;
+		this.valorAcessorio = valorAcessorio;
 	}
 
 	public Long getIdAcessorio() {
@@ -53,6 +53,6 @@ public class Acessorio {
 	}
 
 	public void setValorAcessorio(Float valorAcessorio) {
-		ValorAcessorio = valorAcessorio;
+		this.valorAcessorio = valorAcessorio;
 	}	
 }
