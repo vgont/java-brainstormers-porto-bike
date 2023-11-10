@@ -40,6 +40,7 @@ public class BicicletaResource {
 		if (bike == null) {
 			return Response.status(Response.Status.NOT_FOUND).build();
 		}
+		
 		response.entity(bike);
 		return response.build();
 
