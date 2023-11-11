@@ -14,7 +14,7 @@ public class CorsFilter implements ContainerResponseFilter {
         ContainerResponseContext responseContext
     ) {
         MultivaluedMap<String, Object> headers = responseContext.getHeaders();
-        headers.add("Access-Control-Allow-Origin", "http://localhost:3000");
+        headers.add("Access-Control-Allow-Origin", "http://localhost:3000, https://brainstormers-porto-bike.vercel.app");
         headers.add("Access-Control-Allow-Methods", "GET, POST, PUT, DELETE, OPTIONS");
         headers.add("Access-Control-Allow-Headers", "origin, content-type, accept, authorization");
         headers.add("Access-Control-Allow-Credentials", "true");
